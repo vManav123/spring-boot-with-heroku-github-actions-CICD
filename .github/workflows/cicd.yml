@@ -11,6 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - run: git config user.email "vmanav1999@gmail.com" && git config user.name "vManav123" && git add -A && git commit -m "Updated code"
     - name: Deploy to Heroku
       uses: AkhileshNS/heroku-deploy@v3.8.8
       with:
