@@ -11,10 +11,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: git config user.email "vmanav1999@gmail.com" && git config user.name "vManav123" && git add -A && git commit -m "Updated code"
+    - name: Build application
+      uses: actions/checkout@v2
     - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.8.8
+      uses: AkhileshNS/heroku-deploy@v3.6.8
       with:
         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
         heroku_email: ${{ secrets.HEROKU_EMAIL }}
         heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+        justlogin: true
+    - run: |
+          heroku container:login
+          # Run commands you would typically run from the heroku cli on your local machine to deploy your code
